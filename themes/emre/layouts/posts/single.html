@@ -1,0 +1,54 @@
+{{ define "main" }}
+<div class="container mt-5 mb-5">
+    <article>
+        <div class="page-header">
+            <h1 class="page-header-title">{{ .Title }}</h1>
+            <div class="page-header-meta">
+                <a href="{{ .Site.BaseURL }}">{{.Site.Params.author}}</a>
+                ·
+                <span>
+                    {{ .PublishDate.Format "January 2, 2006" }}
+                </span>
+                ·
+                <span>
+                    {{ .ReadingTime }} {{ if eq .ReadingTime 1 }} minute {{ else }} minutes {{ end }}
+                </span>
+                <div class="page-header-meta-tags">
+                    {{ range $idx, $tag := .Params.tags }}
+                    <a class="btn btn-sm btn-light" href="{{ "tags/" | relURL }}{{ $tag | urlize }}">{{ $tag }}</a>
+                    {{- end }}
+                </div>
+            </div>
+        </div>
+        <div class="page-content">
+            {{ .Content }}
+        </div>
+        <div class="page-footer">
+            <div class="page-footer-page-navigation">
+                <div class="row justify-content-around">
+                    {{ $isPrev := false }}
+                    {{ $isNext := false }}
+
+                    {{ if .PrevInSection }} {{ $isPrev = true }} {{ end }}
+                    {{ if .NextInSection }} {{ $isNext = true }} {{ end }}
+
+                    {{ with .PrevInSection }}
+                    <div
+                        class="page-footer-page-navigation-page col-sm p-4 mx-3 mt-3 bg-light {{ if $isNext }} text-md-right {{ end }} text-center">
+                        <p>Previous</p>
+                        <a href="{{ .Permalink }}">{{.Title}}</a>
+                    </div>
+                    {{ end }}
+                    {{ with .NextInSection }}
+                    <div
+                        class="page-footer-page-navigation-page col-sm p-4 mx-3 mt-3 bg-light {{ if $isPrev }} text-md-left {{ end }} text-center">
+                        <p>Next</p>
+                        <a href="{{ .Permalink }}">{{ .Title }}</a>
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </article>
+</div>
+{{ end }}

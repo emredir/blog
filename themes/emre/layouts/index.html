@@ -1,0 +1,21 @@
+{{ define "main" }}
+<div class="container mt-5 mb-5">
+    <div class="page-content">
+        <div>
+            {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+            {{ range $pages }}
+            <div class="post-list-index-item">
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+                <time>{{ .Date.Format "Jan 2, 2006" }}</time>
+                <p>{{ .Description }}</p>
+                <div class="post-list-index-item-tags">
+                    {{ range $idx, $tag := .Params.tags }}
+                    <a class="btn btn-sm btn-light" href="{{ "tags/" | relURL }}{{ $tag | urlize }}">{{ $tag }}</a>
+                    {{- end }}
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</div>
+{{ end }}

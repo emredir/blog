@@ -1,0 +1,31 @@
+<header>
+    <nav class="navbar navbar-expand navbar-light">
+        <div class="container d-flex flex-column flex-md-row">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link nav-author" href="{{ .Site.BaseURL }}"
+                        style="font-weight: bold; color: #000000;">
+                        {{.Site.Params.author}}
+                    </a>
+                </li>
+                {{ range .Site.Menus.social }}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{.URL}}" target="_blank" rel="noreferrer" title="{{ .Name }}">
+                        {{.Pre}}
+                    </a>
+                </li>
+                {{ end }}
+            </ul>
+            <div class="navbar-nav-scroll">
+                <ul class="navbar-nav flex-row">
+                    {{ range .Site.Menus.main }}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ .URL | absURL }}"
+                            style="font-weight: bold; font-size: 14px; font-style: normal;">{{ .Name }}</a>
+                    </li>
+                    {{ end }}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,42 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "Emre Demir"
+theme = "emre"
+
+[params]
+    description = "Personal blog"
+    author = "Emre Demir"
+    authorImage = "/images/emre.jpg"
+
+[menu]
+  [[menu.main]]
+    identifier = "posts"
+    name = "Posts"
+    url = "/posts"
+    weight = 100
+
+  [[menu.main]]
+    identifier = "tags"
+    name = "Tags"
+    url = "/tags"
+    weight = 110
+
+  [[menu.main]]
+    name = "About"
+    url = "/about"
+    weight = 120
+
+  [[menu.social]]
+    name = "GitHub"
+    url = "https://github.com/emredir"
+    pre = "<i class='fab fa-github'></i>"
+
+  [[menu.social]]
+    name = "LinkedIn"
+    url = "https://www.linkedin.com/in/emre-demir-04a2a114b/"
+    pre = "<i class='fab fa-linkedin'></i>"
+
+  [[menu.social]]
+    name = "Twitter"
+    url = "https://twitter.com/emredir_"
+    pre = "<i class='fab fa-twitter'></i>"

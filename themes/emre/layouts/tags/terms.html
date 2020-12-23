@@ -1,0 +1,17 @@
+{{ define "main" }}
+<div class="container mt-5 mb-5">
+    <div class="page-header">
+        <h1 class="page-header-title">{{ .Title }}</small></h1>
+    </div>
+    <div class="page-content">
+        <div class="tag-list">
+            {{ range .Data.Terms.ByCount }}
+            <a class="btn btn-md btn-light" href="{{ .Page.Permalink }}">
+                {{ .Page.Title }}
+                <span class="badge badge-info">{{ len .Pages }}</span>
+            </a>
+            {{ end }}
+        </div>
+    </div>
+</div>
+{{ end }}

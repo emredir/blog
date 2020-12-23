@@ -1,0 +1,27 @@
+{{ define "main" }}
+<div class="container mt-5 mb-5">
+    <div class="page-header">
+        <h1 class="page-header-title">Tags: <small class="text-secondary">{{ .Title }}</small></h1>
+        <div class="page-header-meta">
+            <span class="ml-1"><span class="text-primary font-weight-bold">{{ len .Pages }}</span> {{ if eq (len .Pages) 1}} post {{ else }} posts {{ end }} found</span>
+        </div>
+    </div>
+    <div class="page-content">
+        <div>
+            {{ $pages := .Pages }}
+            {{ range $pages }}
+            <div class="post-list-index-item">
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+                <time>{{ .Date.Format "Jan 2, 2006" }}</time>
+                <p>{{ .Description }}</p>
+                <div class="post-list-index-item-tags">
+                    {{ range $idx, $tag := .Params.tags }}
+                    <a class="btn btn-sm btn-light" href="{{ "tags/" | relURL }}{{ $tag | urlize }}">{{ $tag }}</a>
+                    {{- end }}
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</div>
+{{ end }}
